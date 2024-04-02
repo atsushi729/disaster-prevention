@@ -1,18 +1,17 @@
 import "./App.css";
+// import "leaflet/dist/leaflet.css";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
 function App() {
   return (
     <div className="App">
-      <MapContainer center={[51.505, -0.09]} zoom={13}>
+      <MapContainer center={[35.6764, 139.65]} zoom={13}>
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution="&copy; https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.{ext}"
+          url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
         />
-        <Marker position={[51.505, -0.09]}>
-          <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
-          </Popup>
+        <Marker position={[35.6764, 139.65]}>
+          <Popup>基本、東京やから</Popup>
         </Marker>
       </MapContainer>
     </div>

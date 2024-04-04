@@ -12,10 +12,10 @@ import {
 } from "react-leaflet";
 
 const MapComponent = () => {
-  const center = [51.505, -0.09];
+  const center = [35.6764, 139.65];
   const rectangle = [
-    [51.49, -0.08],
-    [51.5, -0.06],
+    [35.6762, 139.51],
+    [35.6764, 139.63],
   ];
 
   return (
@@ -32,6 +32,11 @@ const MapComponent = () => {
             </Popup>
           </Marker>
         </LayersControl.Overlay>
+        {/* Tile Layer for Tsunami */}
+        <LayersControl.Overlay name="Tsunami">
+          <TileLayer url="https://disaportaldata.gsi.go.jp/raster/01_flood_l2_shinsuishin_kuni_data/{z}/{x}/{y}.png" />
+        </LayersControl.Overlay>
+        
         <LayersControl.Overlay checked name="Layer group with circles">
           <LayerGroup>
             <Circle
@@ -45,9 +50,20 @@ const MapComponent = () => {
               radius={100}
               stroke={false}
             />
+            <Circle
+              center={center}
+              pathOptions={{ fillColor: "red" }}
+              radius={100}
+              stroke={false}
+            />
             <LayerGroup>
               <Circle
                 center={[51.51, -0.08]}
+                pathOptions={{ color: "green", fillColor: "green" }}
+                radius={100}
+              />
+              <Circle
+                center={[51.52, -0.08]}
                 pathOptions={{ color: "green", fillColor: "green" }}
                 radius={100}
               />
@@ -57,7 +73,7 @@ const MapComponent = () => {
         <LayersControl.Overlay name="Feature group">
           <FeatureGroup pathOptions={{ color: "purple" }}>
             <Popup>Popup in FeatureGroup</Popup>
-            <Circle center={[51.51, -0.06]} radius={200} />
+            <Circle center={[35.6764, 139.65]} radius={200} />
             <Rectangle bounds={rectangle} />
           </FeatureGroup>
         </LayersControl.Overlay>

@@ -36,7 +36,15 @@ const MapComponent = () => {
         <LayersControl.Overlay name="Tsunami">
           <TileLayer url="https://disaportaldata.gsi.go.jp/raster/01_flood_l2_shinsuishin_kuni_data/{z}/{x}/{y}.png" />
         </LayersControl.Overlay>
-        
+
+        <LayersControl.Overlay name="浸水継続時間（想定最大規模）">
+          <TileLayer url="https://disaportaldata.gsi.go.jp/raster/01_flood_l2_keizoku_data/{z}/{x}/{y}.png" />
+        </LayersControl.Overlay>
+
+        <LayersControl.Overlay name="高潮浸水想定区域">
+          <TileLayer url="https://disaportaldata.gsi.go.jp/raster/03_hightide_l2_shinsuishin_data/{z}/{x}/{y}.png" />
+        </LayersControl.Overlay>
+
         <LayersControl.Overlay checked name="Layer group with circles">
           <LayerGroup>
             <Circle

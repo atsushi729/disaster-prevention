@@ -7,15 +7,19 @@ import {
   LayerGroup,
   FeatureGroup,
   LayersControl,
-  Rectangle,
   Circle,
+  Polygon,
 } from "react-leaflet";
 
 const MapComponent = () => {
   const center = [35.6764, 139.65];
   const rectangle = [
-    [35.6762, 139.51],
-    [35.6764, 139.63],
+    [139.7533363620384, 35.67221328711432],
+    [139.75587818948617, 35.671086972643764],
+    [139.75904392003724, 35.67502900375517],
+    [139.75590129700902, 35.67639928325207],
+    [139.75465349080787, 35.67472866537973],
+    [139.7533363620384, 35.67221328711432],
   ];
 
   return (
@@ -32,19 +36,22 @@ const MapComponent = () => {
             </Popup>
           </Marker>
         </LayersControl.Overlay>
-        {/* Tile Layer for Tsunami */}
-        <LayersControl.Overlay name="Tsunami">
-          <TileLayer url="https://disaportaldata.gsi.go.jp/raster/01_flood_l2_shinsuishin_kuni_data/{z}/{x}/{y}.png" />
+        {/* Tile Layer for Flood */}
+        <LayersControl.Overlay name="洪水浸水想定区域（想定最大規模）">
+          <TileLayer url="https://disaportaldata.gsi.go.jp/raster/01_flood_l2_shinsuishin_data/{z}/{x}/{y}.png" />
         </LayersControl.Overlay>
-
+        {/* Tile Layer for Flood continue time*/}
         <LayersControl.Overlay name="浸水継続時間（想定最大規模）">
           <TileLayer url="https://disaportaldata.gsi.go.jp/raster/01_flood_l2_keizoku_data/{z}/{x}/{y}.png" />
         </LayersControl.Overlay>
-
+        {/* Tile Layer for Tsunami */}
+        <LayersControl.Overlay name="津波浸水想定">
+          <TileLayer url="https://disaportaldata.gsi.go.jp/raster/01_flood_l2_shinsuishin_kuni_data/{z}/{x}/{y}.png" />
+        </LayersControl.Overlay>
+        {/* Tile Layer for High tide */}
         <LayersControl.Overlay name="高潮浸水想定区域">
           <TileLayer url="https://disaportaldata.gsi.go.jp/raster/03_hightide_l2_shinsuishin_data/{z}/{x}/{y}.png" />
         </LayersControl.Overlay>
-
         <LayersControl.Overlay checked name="Layer group with circles">
           <LayerGroup>
             <Circle
@@ -82,7 +89,7 @@ const MapComponent = () => {
           <FeatureGroup pathOptions={{ color: "purple" }}>
             <Popup>Popup in FeatureGroup</Popup>
             <Circle center={[35.6764, 139.65]} radius={200} />
-            <Rectangle bounds={rectangle} />
+            <Polygon pathOptions={{ color: "purple" }} positions={rectangle} />
           </FeatureGroup>
         </LayersControl.Overlay>
       </LayersControl>

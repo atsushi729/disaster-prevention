@@ -52,6 +52,14 @@ const MapComponent = () => {
         <LayersControl.Overlay name="高潮浸水想定区域">
           <TileLayer url="https://disaportaldata.gsi.go.jp/raster/03_hightide_l2_shinsuishin_data/{z}/{x}/{y}.png" />
         </LayersControl.Overlay>
+        {/* Tile Layer for shadedrelief */}
+        <LayersControl.Overlay name="陰影起伏図">
+          <TileLayer
+            url="http://cyberjapandata.gsi.go.jp/xyz/hillshademap/{z}/{x}/{y}.png"
+            opacity={0.5}
+          />
+        </LayersControl.Overlay>
+
         <LayersControl.Overlay checked name="Layer group with circles">
           <LayerGroup>
             <Circle
